@@ -2,7 +2,7 @@
 ## Abstract: 
 This section provides a brief summary of the project, highlighting the main research question, methodology, results, and conclusions. It should be concise and clear, usually limited to 250-300 words.
 
-This project is aimed at generating illustrations using the text from novels provided. 
+This project is aimed at generating illustrations using text from novels. The main questions I will answer involve what sorts of NlP techniques are most useful at extracting information from a large amount of text that would be useful for creating a text prompt to feed into a downstream generative AI model. Deciding the chunking of the text was an initial challenge as datasets usually include page and chapter delineations. In order to accomplish the NLP portion of this task, I summarized the appropriate chunking of text using BERT and then combined those results with named-entity recognition, specifically sPaCy's implementation, to get the entities out of the distilled text relevant for illustration. The entities I focused on were location, person, and organization. Using this methodology allowed me to have full sentences to feed into the Stable Diffusion API. I was able to generate reasonable illustrations, but limitations of the generative AI models made the results worse in some situations, particularly for drawing faces. Furthermore, more fine tuning could definitely be incorporated in future work to improve these illustrations. .
 
 ## Introduction: 
 
@@ -23,13 +23,34 @@ Research Questions:
 8. How can this be put into a container for easy inference?
 
 ## Literature review: 
-This section provides a comprehensive review of the relevant literature on the topic being studied. It highlights the strengths and weaknesses of previous research and identifies gaps in the current understanding of the topic. [NOTE: Not required but will make an impression. 1-2 paragraphs]
 
 As far as I could find, there has not been any research done specifically to illustrate novels using NLP techniques. NLP applications using novels are a common field of research, so I drew insights from how to extract information in text based on other work done about NLP techniques. Specifically, named-entity recognition and summarization were a key part of my pipeline, so I referenced the documentation for these two areas of NLP frequently. 
 
 ## Methodology/Dataset: 
 This section explains the research design, including the data sources, data collection methods, and analysis techniques used. It also discusses any assumptions made and the rationale behind the chosen methods. [NOTE: 2-4 paragraphs]
+
+I used two novels for this project -- Harry Potter and the Sorceror’s Stone and The Great Gatsby. I sourced my Harry Potter dataset from Github and The Great Gatsby from Project Gutenberg. Specifically, the Harry Potter dataset was a.txt file I downloaded and I webscraped the Project Gutenberg .txt file using BeautifulSoup. I initially started by only using Harry Potter, but I wanted to see illustrations from two very different types of novels so I added the Great Gatsby to compare how the modeling performed on differing scenery types. 
+
+‘’’import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import numpy as np
+
+url = "http://gutenberg.net.au/ebooks02/0200041.txt"
+response = requests.get(url)
+soup = BeautifulSoup(response.content, 'html.parser')
+text = soup.get_text()
+chapters = text.split("Chapter")
+df = pd.DataFrame()
+df['chapter_text'] = chapters
+df.drop(0, inplace = True)
+df['chapter_text'] = df["chapter_text"].replace("\r\n", "", regex=True).str.lower()'''
+
+For creating the text prompt 
+
 <img width="846" alt="Screen Shot 2023-05-14 at 11 15 10 PM" src="https://github.com/rinigupta11/Generative_AI_For_Illustrations/assets/76021844/3e3db4a1-4717-4bc6-8e51-15163bc61d95">
+
+
 
 ## Results: 
 This section presents the findings of the research, including descriptive statistics, tables, and graphs. It should provide a clear and concise summary of the main results, highlighting any patterns or trends observed. [NOTE: 2-4 paragraphs]
@@ -52,6 +73,8 @@ Harry Potter and the Philosopher's Stone. GitHub. (n.d.). Retrieved April 27, 20
 Run Stable Diffusion with an API. Replicate. (n.d.). Retrieved April 27, 2023, from https://replicate.com/blog/run-stable-diffusion-with-an-api 
 
 The Great Gatsby. Project Gutenberg Australia. (n.d.). Retrieved April 27, 2023, from http://gutenberg.net.au/ebooks02/0200041.txt 
+
+
 
 
 
