@@ -166,8 +166,6 @@ In general, one major area of improvement is that it is very difficult to use me
 The implications of this research are diverse. Illustrations are useful for having a better experience reading a novel, but they could also be useful in numerous other ways. Illustrations open up more difficult novels to less advanced readers and aid in comprehension. Furthermore, illustrations can be a useful tool when someone is learning a new language for the first time. Finally, illustrations can be useful when brainstorming as they can help bring ideas to life. 
 
 ## Conclusion: 
-This section summarizes the main findings of the study, restates the research question, and discusses the implications of the research for future research and practice. [NOTE: 1-2 paragraphs]
-
 In essence, I generated text prompts that were of a reasonable length to send to the Stable Diffusion API for illustration. In order to create these prompts, I used extractive summarization and NER on a chapter-by-chapter basis. Stable Diffusion was a limiting factor as it was the only way to visualize the efficacy of the text prompts, but had weaknesses itself in drawing certain things. Furthermore, it was difficult to assess the accuracy of this modeling given the generative nature of the project and limited prior work. In the future, I would like to expand the dataset to include a variety of novels, add in dependency parsing, add a dictionary of characters, and create a user interface to obtain feedback. 
 
 ## References: 
