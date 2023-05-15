@@ -2,6 +2,8 @@
 ## Abstract: 
 This section provides a brief summary of the project, highlighting the main research question, methodology, results, and conclusions. It should be concise and clear, usually limited to 250-300 words.
 
+This project is aimed at generating illustrations using the text from novels provided. 
+
 ## Introduction: 
 The introduction provides background information on the topic being studied, and explains the motivation behind the research question. This section also highlights the novelty of the research, its importance, and its potential impact. [NOTE: 1-2 paragraphs]
 
@@ -9,12 +11,24 @@ What if you could view illustrations of any novel you chose? I know I love to se
 
 ![image](https://user-images.githubusercontent.com/76021844/219227363-710759a9-3d0e-43ad-9ec6-c74375b19ff9.png)
 
+Research Questions:
+1. What parts of a grouping of text are important for illustration?
+2. How should the text be grouped (i.e. by pages or chapter or something else)
+3. What NLP methods are useful for extracting meaning from the text relevant to illustration?
+4. Which generative model works better for this task?
+5. How do we judge the "accuracy" of the results? Is visual inspection sufficient for determining merit of this modeling approach?
+6. Where can book data be sourced?
+7. What cleaning has to be performed on the data gathered?
+8. How can this be put into a container for easy inference?
 
 ## Literature review: 
 This section provides a comprehensive review of the relevant literature on the topic being studied. It highlights the strengths and weaknesses of previous research and identifies gaps in the current understanding of the topic. [NOTE: Not required but will make an impression. 1-2 paragraphs]
 
+As far as I could find, there has not been any research done specifically to illustrate novels using NLP techniques. NLP applications using novels are a common field of research, so I drew insights from how to extract information in text based on other work done about NLP techniques. Specifically, named-entity recognition and summarization were a key part of my pipeline, so I referenced the documentation for these two areas of NLP frequently. 
+
 ## Methodology/Dataset: 
 This section explains the research design, including the data sources, data collection methods, and analysis techniques used. It also discusses any assumptions made and the rationale behind the chosen methods. [NOTE: 2-4 paragraphs]
+<img width="846" alt="Screen Shot 2023-05-14 at 11 15 10 PM" src="https://github.com/rinigupta11/Generative_AI_For_Illustrations/assets/76021844/3e3db4a1-4717-4bc6-8e51-15163bc61d95">
 
 ## Results: 
 This section presents the findings of the research, including descriptive statistics, tables, and graphs. It should provide a clear and concise summary of the main results, highlighting any patterns or trends observed. [NOTE: 2-4 paragraphs]
@@ -32,15 +46,7 @@ This section provides a list of all the sources cited in the paper, following a 
 
 From this project, I hope to understand how to best extract meaning from a large body of text that is relevant for illustration. An analysis would be necessary here to determine which parts of speech and other context clues could be important for words to illustrate. Stringing these words together in a meaningful way will also prove to be a challenge. The generative modeling is not the main scope of my project and will simply demonstrate the relative success or failure of my NLP methodology in a visual way. 
 
-Research Questions:
-1. What parts of a grouping of text are important for illustration?
-2. How should the text be grouped (i.e. by pages or chapter or something else)
-3. What NLP methods are useful for extracting meaning from the text relevant to illustration?
-4. Which generative model works better for this task?
-5. How do we judge the "accuracy" of the results? Is visual inspection sufficient for determining merit of this modeling approach?
-6. Where can book data be sourced?
-7. What cleaning has to be performed on the data gathered?
-8. How can this be put into a container for easy inference?
+
 
 
 TODO:
