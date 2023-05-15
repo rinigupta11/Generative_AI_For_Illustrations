@@ -45,7 +45,8 @@ chapters = text.split("Chapter")
 df = pd.DataFrame()
 df['chapter_text'] = chapters
 df.drop(0, inplace = True)
-df['chapter_text'] = df["chapter_text"].replace("\r\n", "", regex=True).str.lower() ```
+df['chapter_text'] = df["chapter_text"].replace("\r\n", "", regex=True).str.lower() 
+```
 
 
 For creating the text prompt 
