@@ -9,6 +9,8 @@ The introduction provides background information on the topic being studied, and
 
 What if you could view illustrations of any novel you chose? I know I love to see visual representations of stories because they help me dive right into the plot. Many books, particularly novels, do not have embedded illustrations. Illustrations are a useful way of understanding the setting and characters of a book. Illustrations help us to imagine the world the novel creates in an effective and immersive way. Using natural language processing and generative neural networks, I aim to take the text of a couple books and generate illustrations using Stable Diffusion. The books I chose to showcase for this project are Harry Potter and the Sorceror's Stone and the Great Gatsby. 
 
+From this project, I hope to understand how to best extract meaning from a large body of text that is relevant for illustration. An analysis would be necessary here to determine which parts of speech and other context clues could be important for words to illustrate. Stringing these words together in a meaningful way will also prove to be a challenge. The generative modeling is not the main scope of my project and will simply demonstrate the relative success or failure of my NLP methodology in a visual way. 
+
 ![image](https://user-images.githubusercontent.com/76021844/219227363-710759a9-3d0e-43ad-9ec6-c74375b19ff9.png)
 
 Research Questions:
@@ -40,23 +42,22 @@ The discussion section interprets the results of the study in light of the resea
 This section summarizes the main findings of the study, restates the research question, and discusses the implications of the research for future research and practice. [NOTE: 1-2 paragraphs]
 
 ## References: 
-This section provides a list of all the sources cited in the paper, following a specific citation style (e.g., APA, MLA).
+Bert-extractive-summarizer. PyPI. (n.d.). Retrieved April 27, 2023, from https://pypi.org/project/bert-extractive-summarizer/ 
+
+ChatGPT, personal communication, February 11, 2023
+
+EntityRecognizer · spaCy API Documentation. EntityRecognizer. (n.d.). Retrieved April 27, 2023, from https://spacy.io/api/entityrecognizer 
+
+Harry Potter and the Philosopher's Stone. GitHub. (n.d.). Retrieved April 27, 2023, from https://github.com/formcept/whiteboard/edit/master/nbviewer/notebooks/data/harrypotter/Book%201%20-%20The%20Philosopher's%20Stone.txt 
+
+Run Stable Diffusion with an API. Replicate. (n.d.). Retrieved April 27, 2023, from https://replicate.com/blog/run-stable-diffusion-with-an-api 
+
+The Great Gatsby. Project Gutenberg Australia. (n.d.). Retrieved April 27, 2023, from http://gutenberg.net.au/ebooks02/0200041.txt 
 
 
 
-From this project, I hope to understand how to best extract meaning from a large body of text that is relevant for illustration. An analysis would be necessary here to determine which parts of speech and other context clues could be important for words to illustrate. Stringing these words together in a meaningful way will also prove to be a challenge. The generative modeling is not the main scope of my project and will simply demonstrate the relative success or failure of my NLP methodology in a visual way. 
 
 
-
-
-TODO:
-1. Get Harry Potter book data
-2. Remove punctuation, lowercase, and perform other preprocessing steps that seem valuable.
-3. Experiment with preprocessing to preserve capturing the meaning for illustration.
-4. Extract words that are important for illustration.
-5. String those extracted words together into a "summary" for the generative model
-6. Understand how to use the generative model and input text in for illustration.
-7. Code will be needed to pipe the different parts of this process together including scraping, preprocessing, extracting, feeding into generative model, and getting an image out in the end. 
 
 
 
