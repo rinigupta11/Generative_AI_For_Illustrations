@@ -31,7 +31,8 @@ This section explains the research design, including the data sources, data coll
 
 I used two novels for this project -- Harry Potter and the Sorceror’s Stone and The Great Gatsby. I sourced my Harry Potter dataset from Github and The Great Gatsby from Project Gutenberg. Specifically, the Harry Potter dataset was a.txt file I downloaded and I webscraped the Project Gutenberg .txt file using BeautifulSoup. I initially started by only using Harry Potter, but I wanted to see illustrations from two very different types of novels so I added the Great Gatsby to compare how the modeling performed on differing scenery types. 
 
-‘’’import requests
+```
+import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
@@ -44,7 +45,8 @@ chapters = text.split("Chapter")
 df = pd.DataFrame()
 df['chapter_text'] = chapters
 df.drop(0, inplace = True)
-df['chapter_text'] = df["chapter_text"].replace("\r\n", "", regex=True).str.lower()'''
+df['chapter_text'] = df["chapter_text"].replace("\r\n", "", regex=True).str.lower() ```
+
 
 For creating the text prompt 
 
