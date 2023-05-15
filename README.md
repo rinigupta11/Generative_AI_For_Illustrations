@@ -29,8 +29,10 @@ As far as I could find, there has not been any research done specifically to ill
 ## Methodology/Dataset: 
 This section explains the research design, including the data sources, data collection methods, and analysis techniques used. It also discusses any assumptions made and the rationale behind the chosen methods. [NOTE: 2-4 paragraphs]
 
-I used two novels for this project -- Harry Potter and the Sorceror’s Stone and The Great Gatsby. I sourced my Harry Potter dataset from Github and The Great Gatsby from Project Gutenberg. Specifically, the Harry Potter dataset was a.txt file I downloaded and I webscraped the Project Gutenberg .txt file using BeautifulSoup. I initially started by only using Harry Potter, but I wanted to see illustrations from two very different types of novels so I added the Great Gatsby to compare how the modeling performed on differing scenery types. 
+I used two novels for this project -- Harry Potter and the Sorceror’s Stone and The Great Gatsby. I sourced my Harry Potter dataset from Glozman and The Great Gatsby from Project Gutenberg. Specifically,  I webscraped the Project Gutenberg .txt file and Harry Potter using BeautifulSoup. I initially started by only using Harry Potter, but I wanted to see illustrations from two very different types of novels so I added the Great Gatsby to compare how the modeling performed on differing scenery types. 
 
+
+Here is my process for loading in the text for The Great Gatsby. 
 ```
 import requests
 from bs4 import BeautifulSoup
@@ -48,6 +50,25 @@ df.drop(0, inplace = True)
 df['chapter_text'] = df["chapter_text"].replace("\r\n", "", regex=True).str.lower() 
 ```
 
+Here is my process for loading in the text for Harry Potter.
+
+```
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import numpy as np
+
+url = "http://www.glozman.com/TextPages/Harry%20Potter%201%20-%20Sorcerer's%20Stone.txt"
+response = requests.get(url)
+soup = BeautifulSoup(response.content, 'html.parser')
+text = soup.get_text()
+chapters = text.split("CHAPTER")
+df = pd.DataFrame()
+df['chapter_text'] = chapters
+df['chapter_text'] = df["chapter_text"].replace("\r\n", "", regex=True).str.lower()
+df.drop(0, inplace = True)
+```
+I did not do much in terms of preprocessing because the downstream tasks worked better without much preprocessing. I really only removed excess white space and made everything lowercase. Preserving the sentence structure was important for the NER and because I needed to extract full sentences for the text prompt in the end. 
 
 For creating the text prompt 
 
