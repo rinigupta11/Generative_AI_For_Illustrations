@@ -67,9 +67,50 @@ df['chapter_text'] = chapters
 df['chapter_text'] = df["chapter_text"].replace("\r\n", "", regex=True).str.lower()
 df.drop(0, inplace = True)
 ```
-I did not do much in terms of preprocessing because the downstream tasks worked better without much preprocessing. I really only removed excess white space and made everything lowercase. Preserving the sentence structure was important for the NER and because I needed to extract full sentences for the text prompt in the end. 
+I did not do much in terms of preprocessing because the downstream tasks worked better without a lot of preprocessing. I really only removed excess white space and made everything lowercase. Preserving the sentence structure was important for the NER and because I needed to extract full sentences for the text prompt in the end. These steps are visible in the code snippets above.
 
-For creating the text prompt 
+Here is the code for the summarization portion. I used the BERT extractive summarizer to distill the text into the important parts for its meaning. The num_sentences parameter was something I played with, especially depending on the chunk size. I usually selected between 3 and 5 sentences for this portion of the pipeline. For chapters, I selected more sentences and for sentences, I selected less.
+```
+! pip install bert-extractive-summarizer
+from summarizer import Summarizer
+
+chapter_2 = df['chapter_text'][2]
+len(chapter_2)
+model = Summarizer()
+summarized_chapter_2 = model(chapter_2, num_sentences = 3)
+```
+Sometimes, the results of the summarization were already short enough to use as a text prompt. In that case, I have a conditional in the create_text_prompt function to just return the summarized text. Here is the code for creating the text prompt.
+```
+# Load the necessary libraries
+import spacy
+
+
+def create_text_prompt(text, prompt_length = 150): 
+  if len(text)<200:
+    return text
+  # Load the English language model
+  nlp = spacy.load('en_core_web_sm')
+  # Process the chapter text with spaCy
+  doc = nlp(text)
+
+  # Get the sentences that contain entities
+  sentences_with_entities = []
+  for sent in doc.sents:
+      if any(ent.label_ in ['PERSON', 'ORG', 'GPE', 'LOC'] for ent in sent.ents):
+          sentences_with_entities.append(sent)
+
+  # Create the prompt
+  prompt = ''
+  for i, sent in enumerate(sentences_with_entities):
+      # Add the sentence text
+      prompt += sent.text.strip()
+
+      # Stop if the prompt is long enough
+      if len(prompt) >= prompt_length:
+          break
+  return prompt.replace('  ', ' ')
+```
+Here, I extract the named entities from the sentences witht he label PERSON, ORG, GPE, and LOC and then append those sentences to a list. In order to create the prompt, I then add each of those sentences until the prompt length is reached. Sentences with those entities are most likely to include information relevant for illustration. I tended to use the prompt_length of 150 characters. 
 
 <img width="846" alt="Screen Shot 2023-05-14 at 11 15 10 PM" src="https://github.com/rinigupta11/Generative_AI_For_Illustrations/assets/76021844/3e3db4a1-4717-4bc6-8e51-15163bc61d95">
 
