@@ -110,7 +110,18 @@ def create_text_prompt(text, prompt_length = 150):
           break
   return prompt.replace('  ', ' ')
 ```
-Here, I extract the named entities from the sentences witht he label PERSON, ORG, GPE, and LOC and then append those sentences to a list. In order to create the prompt, I then add each of those sentences until the prompt length is reached. Sentences with those entities are most likely to include information relevant for illustration. I tended to use the prompt_length of 150 characters. 
+Here, I extract the named entities from the sentences with the label PERSON, ORG, GPE, and LOC and then append those sentences to a list. Out of the entities that sPaCy recognizes, these seemed to be the most relevant for the task at hand. In order to create the prompt, I then add each of those sentences until the prompt length is reached. Sentences with those entities are most likely to include information relevant for illustration. I tended to use the prompt_length of 150 characters. 
+
+I then fed the results of that function, the textual prompt, into the stable diffusion API. Here is the code for how I used the API to generate illustrations in an external url.
+```
+import replicate
+import webbrowser
+model = replicate.models.get("stability-ai/stable-diffusion")
+version = model.versions.get("db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf")
+output_url = version.predict(prompt=prompt_text)[0]
+print(output_url)
+webbrowser.open(output_url)
+```
 
 <img width="846" alt="Screen Shot 2023-05-14 at 11 15 10 PM" src="https://github.com/rinigupta11/Generative_AI_For_Illustrations/assets/76021844/3e3db4a1-4717-4bc6-8e51-15163bc61d95">
 
