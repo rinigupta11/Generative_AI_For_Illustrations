@@ -123,12 +123,24 @@ print(output_url)
 webbrowser.open(output_url)
 ```
 
+The figure below illustrates my pipeline for this project.
 <img width="846" alt="Screen Shot 2023-05-14 at 11 15 10 PM" src="https://github.com/rinigupta11/Generative_AI_For_Illustrations/assets/76021844/3e3db4a1-4717-4bc6-8e51-15163bc61d95">
 
 
 
 ## Results: 
 This section presents the findings of the research, including descriptive statistics, tables, and graphs. It should provide a clear and concise summary of the main results, highlighting any patterns or trends observed. [NOTE: 2-4 paragraphs]
+
+For the prompt, “About half way between West Egg and New York the motor-road hastily joins the railroad and runs beside it for a quarter of a mile, so as to shrink away from a certain desolate area of land,” I obtained this illustration: 
+<img width="322" alt="Screen Shot 2023-05-15 at 6 22 47 PM" src="https://github.com/rinigupta11/Generative_AI_For_Illustrations/assets/76021844/d15ab6e7-abde-4bab-99a1-00563e5127f2">
+
+
+For the prompt, "On Sunday morning while church bells rang in the villages along shore the world and its mistress returned to Gatsby's house and twinkled hilariously on his lawn.", I got this illustration:
+
+
+<img width="376" alt="Screen Shot 2023-05-15 at 6 23 18 PM" src="https://github.com/rinigupta11/Generative_AI_For_Illustrations/assets/76021844/d980be74-5b62-4600-948e-05d19b6b341c">
+
+For the prompt
 
 ## Discussion: 
 The discussion section interprets the results of the study in light of the research question and literature review. It should explain how the findings relate to previous research and provide a critical analysis of their implications. [NOTE: 6-10 paragraphs]
