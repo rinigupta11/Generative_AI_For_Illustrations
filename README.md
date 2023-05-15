@@ -5,7 +5,6 @@ This section provides a brief summary of the project, highlighting the main rese
 This project is aimed at generating illustrations using the text from novels provided. 
 
 ## Introduction: 
-The introduction provides background information on the topic being studied, and explains the motivation behind the research question. This section also highlights the novelty of the research, its importance, and its potential impact. [NOTE: 1-2 paragraphs]
 
 What if you could view illustrations of any novel you chose? I know I love to see visual representations of stories because they help me dive right into the plot. Many books, particularly novels, do not have embedded illustrations. Illustrations are a useful way of understanding the setting and characters of a book. Illustrations help us to imagine the world the novel creates in an effective and immersive way. Using natural language processing and generative neural networks, I aim to take the text of a couple books and generate illustrations using Stable Diffusion. The books I chose to showcase for this project are Harry Potter and the Sorceror's Stone and the Great Gatsby. 
 
