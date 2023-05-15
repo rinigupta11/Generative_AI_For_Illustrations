@@ -26,7 +26,6 @@ Research Questions:
 As far as I could find, there has not been any research done specifically to illustrate novels using NLP techniques. NLP applications using novels are a common field of research, so I drew insights from how to extract information in text based on other work done about NLP techniques. Specifically, named-entity recognition and summarization were a key part of my pipeline, so I referenced the documentation for these two areas of NLP frequently. 
 
 ## Methodology/Dataset: 
-This section explains the research design, including the data sources, data collection methods, and analysis techniques used. It also discusses any assumptions made and the rationale behind the chosen methods. [NOTE: 2-4 paragraphs]
 
 I used two novels for this project -- Harry Potter and the Sorceror’s Stone and The Great Gatsby. I sourced my Harry Potter dataset from Glozman and The Great Gatsby from Project Gutenberg. Specifically,  I webscraped the Project Gutenberg .txt file and Harry Potter using BeautifulSoup. I initially started by only using Harry Potter, but I wanted to see illustrations from two very different types of novels so I added the Great Gatsby to compare how the modeling performed on differing scenery types. 
 
@@ -129,7 +128,6 @@ The figure below illustrates my pipeline for this project.
 
 
 ## Results: 
-This section presents the findings of the research, including descriptive statistics, tables, and graphs. It should provide a clear and concise summary of the main results, highlighting any patterns or trends observed. [NOTE: 2-4 paragraphs]
 
 Given that this project included generative AI as the final result, it was difficult to calculate metrics to assess performance. At this stage, I assessed the performance of the model by visually inspecting the images and I am attaching some of them below for others to validate as well. I noticed that the model had some preconceptions of popular characters like Harry Potter. That is, when the text prompt included just the name Harry, the illustration did not include aspects of Harry Potter like glasses and other character attributes. In contrast, if the prompt included the term Harry Potter, the generative AI drew a much more realistic illustration including common character attributes for Harry. Furthermore, I noticed that Stable Diffusion was not the best at drawing faces, like in the illustration I got below: 
 
