@@ -131,7 +131,12 @@ The figure below illustrates my pipeline for this project.
 ## Results: 
 This section presents the findings of the research, including descriptive statistics, tables, and graphs. It should provide a clear and concise summary of the main results, highlighting any patterns or trends observed. [NOTE: 2-4 paragraphs]
 
+Given that this project included generative AI as the final result, it was difficult to calculate metrics to assess performance. At this stage, I assessed the performance of the model by visually inspecting the images and I am attaching some of them below for others to validate as well. I noticed that the model had some preconceptions of popular characters like Harry Potter. That is, when the text prompt included just the name Harry, the illustration did not include aspects of Harry Potter like glasses and other character attributes. In contrast, if the prompt included the term Harry Potter, the generative AI drew a much more realistic illustration including common character attributes for Harry. 
+
+In terms of the prompts, the parameters I found to be the best were 3 sentences and a prompt length of 150 characters. These hyperparameters could change depending on the novel being illustrated, but these were very influential in the final result. The NER performed well with the given entities but I would like to include dependency parsing in future iterations of this project. The BERT summarizer was the most effective summarizer I tried out of about 4 or 5 prepackaged summarization tools in Python. 
+
 For the prompt, “About half way between West Egg and New York the motor-road hastily joins the railroad and runs beside it for a quarter of a mile, so as to shrink away from a certain desolate area of land,” I obtained this illustration: 
+
 <img width="322" alt="Screen Shot 2023-05-15 at 6 22 47 PM" src="https://github.com/rinigupta11/Generative_AI_For_Illustrations/assets/76021844/d15ab6e7-abde-4bab-99a1-00563e5127f2">
 
 
@@ -140,7 +145,10 @@ For the prompt, "On Sunday morning while church bells rang in the villages along
 
 <img width="376" alt="Screen Shot 2023-05-15 at 6 23 18 PM" src="https://github.com/rinigupta11/Generative_AI_For_Illustrations/assets/76021844/d980be74-5b62-4600-948e-05d19b6b341c">
 
-For the prompt
+For the prompt, “Harry Potter sighed and stretched out on the bed. He privately agreed, though the thought didn't cheer him up at all.”
+
+<img width="367" alt="Screen Shot 2023-05-15 at 6 40 10 PM" src="https://github.com/rinigupta11/Generative_AI_For_Illustrations/assets/76021844/b357764a-43ec-4757-b895-1bb5a0ae6f0f">
+
 
 ## Discussion: 
 The discussion section interprets the results of the study in light of the research question and literature review. It should explain how the findings relate to previous research and provide a critical analysis of their implications. [NOTE: 6-10 paragraphs]
