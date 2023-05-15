@@ -1,7 +1,7 @@
 # Generative AI For Illustrations
 ## Abstract: 
 
-This project is aimed at generating illustrations using text from novels. The main questions I will answer involve what sorts of NlP techniques are most useful at extracting information from a large amount of text that would be useful for creating a text prompt to feed into a downstream generative AI model. Deciding the chunking of the text was an initial challenge as datasets usually include page and chapter delineations. In order to accomplish the NLP portion of this task, I summarized the appropriate chunking of text using BERT and then combined those results with named-entity recognition, specifically sPaCy's implementation, to get the entities out of the distilled text relevant for illustration. The entities I focused on were location, person, and organization. Using this methodology allowed me to have full sentences to feed into the Stable Diffusion API. I was able to generate reasonable illustrations, but limitations of the generative AI models made the results worse in some situations, particularly for drawing faces. Furthermore, more fine tuning could definitely be incorporated in future work to improve these illustrations. .
+This project is aimed at generating illustrations using text from novels. The main questions I will answer involve what sorts of NlP techniques are most useful at extracting information from a large amount of text that would be useful for creating a text prompt to feed into a downstream generative AI model. Deciding the chunking of the text was an initial challenge as datasets usually include page and chapter delineations. In order to accomplish the NLP portion of this task, I summarized the appropriate chunking of text using BERT and then combined those results with named-entity recognition, specifically sPaCy's implementation, to get the entities out of the distilled text relevant for illustration. The entities I focused on were location, person, and organization. Using this methodology allowed me to have full sentences to feed into the Stable Diffusion API. I was able to generate reasonable illustrations, but limitations of the generative AI models made the results worse in some situations, particularly for drawing faces. Furthermore, more fine tuning in terms of adding more NLP steps like incorporating dependency parsing and creating a character dictionary should definitely be incorporated in future work to improve these illustrations. .
 
 ## Introduction: 
 
@@ -134,7 +134,7 @@ Given that this project included generative AI as the final result, it was diffi
 <img width="265" alt="Screen Shot 2023-05-15 at 6 51 48 PM" src="https://github.com/rinigupta11/Generative_AI_For_Illustrations/assets/76021844/c9ce14ca-0d77-48ba-9a78-66bf4c72be74">
 
 
-In terms of the prompts, the parameters I found to be the best were 3 sentences and a prompt length of 150 characters. These hyperparameters could change depending on the novel being illustrated, but these were very influential in the final result. The NER performed well with the given entities but I would like to include dependency parsing in future iterations of this project. The BERT summarizer was the most effective summarizer I tried out of about 4 or 5 prepackaged summarization tools in Python. Extractive summarization made the most sense for this use case since I wanted to use the sentences of the book to aid illustration downstream.
+In terms of the prompts, the parameters I found to be the best were 3 sentences and a prompt length of 150 characters. These hyperparameters could change depending on the novel being illustrated, but these were very influential in the final result. The NER performed well with the given entities but I would like to include dependency parsing in future iterations of this project. The BERT summarizer was the most effective summarizer I tried out of about 4 or 5 prepackaged summarization tools in Python. Extractive summarization made the most sense for this use case since I wanted to use the sentences of the book to aid illustration downstream. Overall, I was satisfied with the results, but Stable Diffusion did make some results worse than I would like despite the prompts being informative. The main scope of this project was my NLP methodology though, and the prompts generated tended to encompass items to illustrate. 
 
 For the prompt, “About half way between West Egg and New York the motor-road hastily joins the railroad and runs beside it for a quarter of a mile, so as to shrink away from a certain desolate area of land,” I obtained this illustration: 
 
@@ -152,7 +152,18 @@ For the prompt, “Harry Potter sighed and stretched out on the bed. He privatel
 
 
 ## Discussion: 
-The discussion section interprets the results of the study in light of the research question and literature review. It should explain how the findings relate to previous research and provide a critical analysis of their implications. [NOTE: 6-10 paragraphs]
+
+The first item that I had to make decisions about was the optimal way to chunk the text. There are a few obvious delineations that are possible, namely paragraph, page, or chapter. I did not work with paragraphs for the purpose of this research because the novels I worked with included too much text to get an illustration for each paragraph. Furthermore, paragraphs might have some information for illustration in the end of the paragraph that continues into the next paragraph. This issue could be the case with pages as well, but should not be an issue with chapters. For the purposes of this project, I found chapters to be the best delineating method because the summarization algorithm was nicely able to distill only the important information in the chapter for the NER to work on. Another way to figure out optimal chunking would be to use a clustering approach in the future. 
+
+The summarization worked just as I would want it to, but perhaps seeing how abstractive summarization works in comparison to extractive summarization would be a useful avenue to explore in the future. Furthermore, doing some more extensive and robust testing about the optimal number of sentences would add validity to the results I obtained. 
+
+It would also be useful in the future to do some more intricate experimentation with named-entity recognition. I just used the sPaCy implementation for NER and got decent results, but depending on the complexity of the text, more advanced NER might be useful. The novels I used for this project were written in fairly easy to understand modern English, but certain novels, such as those written by Shakespeare for example, might require more advanced NER. Furthermore, in order to get accurate depictions of characters, creating a dictionary of all the character names and adding adjectives/traits about the characters into that dictionary would be useful for non-popular novels. 
+
+Another step that would likely improve the results (meaning the quality of the text prompt) would be to include dependency parsing. Doing so would improve the richness of the prompts as one could extract descriptive information. What I found difficulty with in incorporating these new steps was figuring out how to preserve the full sentence prompt structure in the end. Including dependency parsing would require one to figure out how to sew the relevant text back together into a form that Stable Diffusion can understand. 
+
+In general, one major area of improvement is that it is very difficult to use metrics to assess the performance of my modeling. Given that (1) there is no good way to judge the quality of a text prompt and (2) the generative AI can lead to worse or better results than the quality of the text prompt, some creativity would be necessary to judge these results. If I had more time, I would have likely had others input some text and give ratings for the results in order to assess how well the models are doing. I plan to create a front-end in the future, so hopefully I can collect more data with user input. 
+
+The implications of this research are diverse. Illustrations are useful for having a better experience reading a novel, but they could also be useful in numerous other ways. Illustrations open up more difficult novels to less advanced readers and aid in comprehension. Furthermore, illustrations can be a useful tool when someone is learning a new language for the first time. Finally, illustrations can be useful when brainstorming as they can help bring ideas to life. 
 
 ## Conclusion: 
 This section summarizes the main findings of the study, restates the research question, and discusses the implications of the research for future research and practice. [NOTE: 1-2 paragraphs]
@@ -169,6 +180,8 @@ Harry Potter and the Philosopher's Stone. GitHub. (n.d.). Retrieved April 27, 20
 Run Stable Diffusion with an API. Replicate. (n.d.). Retrieved April 27, 2023, from https://replicate.com/blog/run-stable-diffusion-with-an-api 
 
 The Great Gatsby. Project Gutenberg Australia. (n.d.). Retrieved April 27, 2023, from http://gutenberg.net.au/ebooks02/0200041.txt 
+
+
 
 
 
